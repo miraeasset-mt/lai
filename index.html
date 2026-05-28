@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tính Lãi Suất Mirae Asset</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Be Vietnam Pro',sans-serif;
+    background:#f1f5f9;
+    color:#0f172a;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.main-header{
+    width:100%;
+    height:78px;
+    background:linear-gradient(90deg,#041933,#07264b,#082d5a);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:9999;
+    box-shadow:0 3px 10px rgba(0,0,0,.15);
+}
+
+.logo-area{
+    width:260px;
+    display:flex;
+    align-items:center;
+    padding-left:20px;
+}
+
+.logo-area img{
+    width:190px;
+}
+
+.main-menu{
+    flex:1;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.main-menu a{
+    height:100%;
+    padding:0 28px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    transition:.25s;
+    border-right:1px solid rgba(255,255,255,.08);
+}
+
+.main-menu a:hover{
+    background:#0c3d73;
+}
+
+.main-menu .active-orange{
+    background:#ff8a00;
+}
+
+.main-menu .active-orange:hover{
+    background:#ff9900;
+}
+
+.header-hotline{
+    width:260px;
+    height:100%;
+    background:#ff8a00;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    font-weight:700;
+}
+
+.header-hotline i{
+    font-size:28px;
+}
+
+.header-hotline small{
+    display:block;
+    font-size:12px;
+    font-weight:500;
+}
+
+/* ===========================
+   FLOATING HOME
+=========================== */
+
+.floating-home{
+    position:fixed;
+    left:22px;
+    top:120px;
+    width:62px;
+    height:62px;
+    background:white;
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 4px 14px rgba(0,0,0,.15);
+    z-index:999;
+}
+
+.floating-home i{
+    font-size:28px;
+    color:#0a376d;
+}
+
+/* ===========================
+   TITLE
+=========================== */
+
+.page-title{
+    width:100%;
+    text-align:center;
+    padding:35px 15px 25px;
+}
+
+.page-title h1{
+    font-size:50px;
+    font-weight:800;
+    color:#082b58;
+}
+
+.page-title .line{
+    width:120px;
+    height:4px;
+    background:#ff8a00;
+    margin:18px auto 0;
+    border-radius:10px;
+}
+
+/* ===========================
+   TAB CONTENT
+=========================== */
+
+.tab-content{
+    display:none;
+}
+
+.tab-content.active{
+    display:block;
+}
+
+/* ===========================
+   FORM
+=========================== */
+
+.container{
+    width:95%;
+    max-width:1400px;
+    margin:auto;
+    background:white;
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.form-group label{
+    display:block;
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:8px;
+    color:#0f172a;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+    height:48px;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+    padding:0 14px;
+    font-size:15px;
+    outline:none;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    border-color:#ff8a00;
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.actions{
+    margin-top:25px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.actions button{
+    height:48px;
+    padding:0 22px;
+    border:none;
+    border-radius:10px;
+    background:#082b58;
+    color:white;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.actions button:hover{
+    transform:translateY(-2px);
+}
+
+.actions .orange{
+    background:#ff8a00;
+}
+
+.actions .green{
+    background:#16a34a;
+}
+
+.actions .gray{
+    background:#64748b;
+}
+
+/* ===========================
+   SUMMARY
+=========================== */
+
+.summary{
+    margin-top:20px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.summary-box{
+    background:#eff6ff;
+    color:#082b58;
+    padding:12px 16px;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:700;
+}
+
+/* ===========================
+   TABLE
+=========================== */
+
+.table-wrap{
+    width:95%;
+    max-width:1400px;
+    margin:25px auto;
+    overflow:auto;
+    background:white;
+    border-radius:12px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th{
+    background:#f3d2ad;
+    color:#0f172a;
+    padding:14px;
+    border:1px solid #d1d5db;
+    font-size:15px;
+}
+
+table td{
+    padding:12px;
+    border:1px solid #d1d5db;
+    text-align:center;
+    font-size:14px;
+}
+
+table tr:hover{
+    background:#f8fafc;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+.footer{
+    margin-top:30px;
+    background:#082b58;
+    color:white;
+    padding:22px;
+    text-align:center;
+    font-size:15px;
+    font-weight:600;
+}
+
+/* ===========================
+   ZALO FLOAT
+=========================== */
+
+.zalo-icon{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    overflow:hidden;
+    z-index:9999;
+    box-shadow:0 4px 15px rgba(0,0,0,.25);
+}
+
+.zalo-icon img{
+    width:100%;
+    height:100%;
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:1100px){
+
+    .form-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .main-menu{
+        overflow:auto;
+    }
+
+    .main-menu a{
+        min-width:180px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .page-title h1{
+        font-size:28px;
+    }
+
+    .header-hotline{
+        display:none;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ===========================
+     HEADER
+=========================== -->
+
+<header class="main-header">
+
+    <div class="logo-area">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Mirae_Asset_logo.svg/2560px-Mirae_Asset_logo.svg.png">
+    </div>
+
+    <nav class="main-menu">
+
+        <a href="#">
+            <i class="fa-solid fa-house"></i>
+        </a>
+
+        <a href="#">
+            TRANG CHỦ
+        </a>
+
+        <a href="javascript:void(0)"
+           class="menu-btn"
+           onclick="switchTab('pl')">
+           TÍNH LÃI SUẤT PL
+        </a>
+
+        <a href="javascript:void(0)"
+           class="menu-btn"
+           onclick="switchTab('topup')">
+           TÍNH LÃI TOPUP
+        </a>
+
+        <a href="#" class="active-orange">
+            SẢN PHẨM VAY
+        </a>
+
+        <a href="#">
+            HƯỚNG DẪN
+        </a>
+
+        <a href="#">
+            LIÊN HỆ
+        </a>
+
+    </nav>
+
+    <div class="header-hotline">
+        <i class="fa-solid fa-phone-volume"></i>
+
+        <div>
+            Zalo: 0964 307 247
+            <small>Hỗ trợ nhanh chóng & uy tín</small>
+        </div>
+    </div>
+
+</header>
+
+<!-- ===========================
+     FLOAT HOME
+=========================== -->
+
+<div class="floating-home">
+    <i class="fa-solid fa-house"></i>
+</div>
+
+<!-- ===========================
+     TITLE
+=========================== -->
+
+<div class="page-title">
+    <h1>TỔNG QUAN SẢN PHẨM VAY TIÊU DÙNG TÍN CHẤP</h1>
+    <div class="line"></div>
+</div>
+
+<!-- =========================================================
+     PANEL PL
+========================================================= -->
+
+<div id="pl" class="tab-content active">
+
+<div class="container">
+
+    <div class="form-grid">
+
+        <div class="form-group">
+            <label>Ngày Giải Ngân</label>
+            <input type="date" id="disbursalDate">
+        </div>
+
+        <div class="form-group">
+            <label>Ngày Kỳ Đóng Đầu Tiên</label>
+            <input type="date" id="firstEmiDate">
+        </div>
+
+        <div class="form-group">
+            <label>Số Tiền Vay</label>
+            <input type="text" id="loanAmount" placeholder="VD: 20.000.000">
+        </div>
+
+        <div class="form-group">
+            <label>% Bảo Hiểm</label>
+            <input type="number" id="insurancePercent" value="7.7">
+        </div>
+
+        <div class="form-group">
+            <label>Lãi Suất (%/năm)</label>
+            <input type="number" id="interestRate" value="52">
+        </div>
+
+        <div class="form-group">
+            <label>Số Kỳ Vay</label>
+            <input type="number" id="months" value="24">
+        </div>
+
+    </div>
+
+    <div class="actions">
+
+        <button class="orange" onclick="calculateLoan()">
+            <i class="fa-solid fa-calculator"></i>
+            Tính Lãi
+        </button>
+
+        <button class="green" onclick="exportExcel()">
+            <i class="fa-solid fa-file-excel"></i>
+            Xuất Excel
+        </button>
+
+        <button onclick="exportPDF()">
+            <i class="fa-solid fa-file-pdf"></i>
+            Xuất PDF
+        </button>
+
+        <button class="gray" onclick="location.reload()">
+            <i class="fa-solid fa-rotate"></i>
+            Nhập Lại
+        </button>
+
+    </div>
+
+    <div class="summary" id="summary"></div>
+
+</div>
+
+<div class="table-wrap">
+    <div id="result"></div>
+</div>
+
+</div>
+
+<!-- =========================================================
+     PANEL TOPUP
+========================================================= -->
+
+<div id="topup" class="tab-content">
+
+<div class="container">
+
+    <div class="form-grid">
+
+        <div class="form-group">
+            <label>EMI Khoản Vay Hiện Tại</label>
+            <input type="text" id="topupCurrentEmi">
+        </div>
+
+        <div class="form-group">
+            <label>Lãi Suất TOPUP</label>
+            <input type="number" id="topupInterestRate" value="48">
+        </div>
+
+        <div class="form-group">
+            <label>Số Kỳ Ân Hạn</label>
+            <input type="number" id="topupGracePeriod" value="14">
+        </div>
+
+        <div class="form-group">
+            <label>Số Tiền Vay TOPUP</label>
+            <input type="text" id="topupLoan">
+        </div>
+
+        <div class="form-group">
+            <label>Bảo Hiểm</label>
+
+            <select id="topupInsuranceYesNo">
+                <option value="YES">YES</option>
+                <option value="NO">NO</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>% Bảo Hiểm</label>
+            <input type="number" id="topupInsuranceRate" value="7.7">
+        </div>
+
+    </div>
+
+    <div class="actions">
+
+        <button class="orange" onclick="calculateTopup()">
+            <i class="fa-solid fa-money-bill"></i>
+            Tính TOPUP
+        </button>
+
+        <button class="gray" onclick="resetTopup()">
+            <i class="fa-solid fa-rotate"></i>
+            Nhập Lại
+        </button>
+
+    </div>
+
+    <div class="summary" id="topupSummary"></div>
+
+</div>
+
+<div class="table-wrap">
+    <div id="topupResult"></div>
+</div>
+
+</div>
+
+<!-- ===========================
+     FOOTER
+=========================== -->
+
+<div class="footer">
+    © Copyright 2026 - Thiết Kế Bởi Mr.Thiên
+</div>
+
+<!-- ===========================
+     ZALO
+=========================== -->
+
+<a href="https://zalo.me/0964307247"
+   target="_blank"
+   class="zalo-icon">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg">
+
+</a>
+
+<!-- ===========================
+     LIBRARY
+=========================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+
+/* ===========================
+   TAB
+=========================== */
+
+function switchTab(id){
+
+    document.querySelectorAll('.tab-content').forEach(el=>{
+        el.classList.remove('active');
+    });
+
+    document.getElementById(id).classList.add('active');
+
+}
+
+/* ===========================
+   FORMAT NUMBER
+=========================== */
+
+function viNumber(n){
+    return Number(n || 0).toLocaleString('vi-VN');
+}
+
+function parseNumber(str){
+    return Number(String(str).replace(/[^\d]/g,'')) || 0;
+}
+
+function addMonthsKeepDay(date, months){
+
+    const d = new Date(date);
+
+    const day = d.getDate();
+
+    d.setDate(1);
+
+    d.setMonth(d.getMonth()+months);
+
+    d.setDate(Math.min(day,new Date(d.getFullYear(),d.getMonth()+1,0).getDate()));
+
+    return d;
+
+}
+
+function roundByPolicy(value){
+    return Math.round(value/1000)*1000;
+}
+
+function daysBetween(d1,d2){
+    return Math.round((d2-d1)/(1000*60*60*24));
+}
+
+function pmt(rate,nper,pv){
+
+    if(rate===0) return pv/nper;
+
+    return (rate*pv)/(1-Math.pow(1+rate,-nper));
+
+}
+
+/* ===========================
+   CALCULATE LOAN
+=========================== */
+
+function calculateLoan(){
+
+    const disbursalDate = new Date(document.getElementById('disbursalDate').value);
+
+    const firstEmiDate = new Date(document.getElementById('firstEmiDate').value);
+
+    const loanAmount = parseNumber(document.getElementById('loanAmount').value);
+
+    const insurancePercent = Number(document.getElementById('insurancePercent').value);
+
+    const interestRate = Number(document.getElementById('interestRate').value);
+
+    const months = Number(document.getElementById('months').value);
+
+    if(!loanAmount){
+        alert("Vui lòng nhập số tiền vay");
+        return;
+    }
+
+    const totalLoan = loanAmount * (1 + insurancePercent/100);
+
+    const monthlyRate = interestRate / 12 / 100;
+
+    const EMI = totalLoan * monthlyRate / (1 - Math.pow(1+monthlyRate,-months));
+
+    document.getElementById('summary').innerHTML = `
+
+        <div class="summary-box">
+            Tổng vay + BH:
+            ${viNumber(Math.round(totalLoan))}
+        </div>
+
+        <div class="summary-box">
+            EMI:
+            ${viNumber(Math.round(EMI+12000))}
+        </div>
+
+        <div class="summary-box">
+            Số kỳ:
+            ${months}
+        </div>
+
+    `;
+
+    let balance = totalLoan;
+
+    let html = `
+    <table>
+
+    <thead>
+    <tr>
+        <th>Kỳ</th>
+        <th>Ngày</th>
+        <th>Gốc</th>
+        <th>Lãi</th>
+        <th>Thanh Toán</th>
+        <th>Dư Nợ</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    `;
+
+    let prevDate = disbursalDate;
+
+    for(let k=1;k<=months;k++){
+
+        let dueDate;
+
+        if(k===1){
+
+            dueDate = firstEmiDate;
+
+        }else{
+
+            dueDate = addMonthsKeepDay(firstEmiDate,k-1);
+
+        }
+
+        let days = daysBetween(prevDate,dueDate);
+
+        const interest = roundByPolicy(balance * interestRate * days / 360 / 100);
+
+        const principal = (k<months)
+            ? roundByPolicy(EMI-interest)
+            : balance;
+
+        balance = Math.max(0,balance-principal);
+
+        const fee = 12000;
+
+        const totalPay = principal + interest + fee;
+
+        html += `
+        <tr>
+
+            <td>${k}</td>
+
+            <td>${dueDate.toLocaleDateString('vi-VN')}</td>
+
+            <td>${viNumber(principal)}</td>
+
+            <td>${viNumber(interest)}</td>
+
+            <td>${viNumber(totalPay)}</td>
+
+            <td>${viNumber(balance)}</td>
+
+        </tr>
+        `;
+
+        prevDate = dueDate;
+
+    }
+
+    html += '</tbody></table>';
+
+    document.getElementById('result').innerHTML = html;
+
+}
+
+/* ===========================
+   EXPORT EXCEL
+=========================== */
+
+function exportExcel(){
+
+    const table = document.querySelector('#result table');
+
+    if(!table){
+        alert("Không có dữ liệu");
+        return;
+    }
+
+    const wb = XLSX.utils.table_to_book(table,{
+        sheet:"LichTra"
+    });
+
+    XLSX.writeFile(wb,'LichTra.xlsx');
+
+}
+
+/* ===========================
+   EXPORT PDF
+=========================== */
+
+function exportPDF(){
+
+    const element = document.getElementById('result');
+
+    html2pdf()
+    .set({
+        margin:0.3,
+        filename:'LichTra.pdf',
+        image:{type:'jpeg',quality:1},
+        html2canvas:{scale:2},
+        jsPDF:{unit:'in',format:'a4',orientation:'portrait'}
+    })
+    .from(element)
+    .save();
+
+}
+
+/* ===========================
+   TOPUP
+=========================== */
+
+function calculateTopup(){
+
+    const currentEmi = parseNumber(document.getElementById('topupCurrentEmi').value);
+
+    const annualRatePct = Number(document.getElementById('topupInterestRate').value);
+
+    const annualRate = annualRatePct/100;
+
+    const gracePeriod = Number(document.getElementById('topupGracePeriod').value);
+
+    const loan = parseNumber(document.getElementById('topupLoan').value);
+
+    const insuranceOpt = document.getElementById('topupInsuranceYesNo').value;
+
+    const insuranceRatePct = Number(document.getElementById('topupInsuranceRate').value);
+
+    const fee = 12000;
+
+    const insurance = insuranceOpt === 'YES'
+        ? loan*insuranceRatePct/100
+        : 0;
+
+    const totalLoan = loan + insurance;
+
+    const graceEmi31 = totalLoan * annualRate / 365 * 31 + fee;
+
+    const maxEmi = currentEmi + graceEmi31;
+
+    const terms = [6,12,18,24,30,36];
+
+    let table = `
+    <table>
+
+    <thead>
+    <tr>
+
+        <th>Kỳ Hạn</th>
+        <th>EMI Ân Hạn</th>
+        <th>EMI Sau Ân Hạn</th>
+        <th>Số Tháng</th>
+        <th>Trạng Thái</th>
+        <th>Tổng Gốc Lãi</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    `;
+
+    terms.forEach(term=>{
+
+        const repayMonths = term - gracePeriod;
+
+        let emiAfterGrace = pmt(annualRate/12,repayMonths,totalLoan);
+
+        const payAfterGrace = emiAfterGrace + fee;
+
+        const isOk = emiAfterGrace <= maxEmi;
+
+        table += `
+        <tr>
+
+            <td>${term}</td>
+
+            <td>${viNumber(Math.round(graceEmi31))}</td>
+
+            <td>${isOk ? viNumber(Math.round(payAfterGrace)) : 'N/A'}</td>
+
+            <td>${repayMonths}</td>
+
+            <td>${isOk ? 'OK' : 'N/A'}</td>
+
+            <td>${isOk ? viNumber(Math.round(payAfterGrace*repayMonths)) : 'N/A'}</td>
+
+        </tr>
+        `;
+
+    });
+
+    table += '</tbody></table>';
+
+    document.getElementById('topupResult').innerHTML = table;
+
+    document.getElementById('topupSummary').innerHTML = `
+
+        <div class="summary-box">
+            LOAN:
+            ${viNumber(loan)}
+        </div>
+
+        <div class="summary-box">
+            INS:
+            ${viNumber(Math.round(insurance))}
+        </div>
+
+        <div class="summary-box">
+            Tổng tiền vay:
+            ${viNumber(Math.round(totalLoan))}
+        </div>
+
+        <div class="summary-box">
+            Max EMI:
+            ${viNumber(Math.round(maxEmi))}
+        </div>
+
+    `;
+
+}
+
+/* ===========================
+   RESET TOPUP
+=========================== */
+
+function resetTopup(){
+
+    document.getElementById('topupCurrentEmi').value = '';
+
+    document.getElementById('topupLoan').value = '';
+
+    document.getElementById('topupResult').innerHTML = '';
+
+    document.getElementById('topupSummary').innerHTML = '';
+
+}
+
+/* ===========================
+   FORMAT MONEY INPUT
+=========================== */
+
+['loanAmount','topupCurrentEmi','topupLoan'].forEach(id=>{
+
+    document.getElementById(id).addEventListener('input',function(e){
+
+        let value = e.target.value.replace(/\D/g,'');
+
+        if(value){
+
+            e.target.value = Number(value).toLocaleString('vi-VN');
+
+        }else{
+
+            e.target.value = '';
+
+        }
+
+    });
+
+});
+
+/* ===========================
+   TODAY
+=========================== */
+
+window.addEventListener('DOMContentLoaded',()=>{
+
+    const today = new Date();
+
+    document.getElementById('disbursalDate').value =
+        today.toISOString().split('T')[0];
+
+    const next = new Date(today);
+
+    next.setDate(next.getDate()+30);
+
+    document.getElementById('firstEmiDate').value =
+        next.toISOString().split('T')[0];
+
+});
+
+/* ===========================
+   PASSWORD
+=========================== */
+
+const matKhauDung = "12344321";
+
+const daDangNhap = localStorage.getItem("daDangNhap");
+
+if(daDangNhap !== "true"){
+
+    let nhapMatKhau = prompt("🔒 Vui lòng nhập mật khẩu:");
+
+    if(nhapMatKhau === matKhauDung){
+
+        localStorage.setItem("daDangNhap","true");
+
+    }else{
+
+        document.body.innerHTML = `
+
+        <div style="
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            background:#081120;
+            color:white;
+            flex-direction:column;
+            font-family:Arial;
+        ">
+
+            <h1>❌ Sai mật khẩu</h1>
+
+            <p>Bạn không có quyền truy cập website.</p>
+
+        </div>
+
+        `;
+
+        throw new Error("Sai mật khẩu");
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
