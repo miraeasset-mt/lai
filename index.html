@@ -355,45 +355,50 @@
       if(!values){ alert("Vui lòng nhập đủ dữ liệu"); return; }
       const {disbursalDate,firstEmiDate,loanAmount,insurancePercent,interestRate,months}=values;
       const totalLoan=loanAmount*(1+insurancePercent/100);
-     function calculateExcelEMI(totalLoan, annualRate, tenure, firstEmiDate){
+     function calculateExcelEMI(
+    totalLoan,
+    annualRate,
+    tenure,
+    disbursalDate,
+    firstEmiDate
+){
 
-  const rateDaily = annualRate / 365 / 100;
+    const rateDaily = annualRate / 360 / 100;
 
-  let factor = 1;
-  let factorSum = 0;
+    let factor = 1;
+    let factorSum = 0;
 
-  let prevDate = new Date(
-    firstEmiDate.getFullYear(),
-    firstEmiDate.getMonth()-1,
-    firstEmiDate.getDate()
-  );
+    let prevDate = new Date(disbursalDate);
 
-  for(let i=1;i<=tenure;i++){
+    for(let i=1;i<=tenure;i++){
 
-    let dueDate;
+        let dueDate;
 
-    if(i===1){
-      dueDate = new Date(firstEmiDate);
-    }else{
-      dueDate = addMonthsKeepDay(firstEmiDate,i-1);
+        if(i===1){
+            dueDate = new Date(firstEmiDate);
+        }else{
+            dueDate = addMonthsKeepDay(firstEmiDate,i-1);
+        }
+
+        const days = Math.round(
+            (dueDate-prevDate)/86400000
+        );
+
+        factor = factor / (1 + rateDaily * days);
+
+        factorSum += factor;
+
+        prevDate = dueDate;
     }
 
-    const days = Math.round((dueDate-prevDate)/86400000);
-
-    factor = factor / (1 + rateDaily*days);
-
-    factorSum += factor;
-
-    prevDate = dueDate;
-  }
-
-  return Math.ceil(totalLoan/factorSum);
+    return Math.ceil(totalLoan / factorSum);
 }
 
 const EMI = calculateExcelEMI(
   totalLoan,
   interestRate,
   months,
+  disbursalDate,
   firstEmiDate
 );
       renderSummary(totalLoan,EMI,months);
